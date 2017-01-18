@@ -3,22 +3,22 @@ import re
 import sys
 
 # MSICS.
-'''print("hello, world!")  # How come the world never responds?
+print("hello, world!")  # How come the world never responds?
 print(sys.argv)  # Print the entire argv array
 print(sys.argv[0])  # Get the first command line argument. Python makes it the name of the program/script
+
 # so user input starts at argv[1]
 print(sys.argv.__sizeof__())  # Initially wanted to get number of elements in argv. This is NOT it
 print(len(sys.argv))  # Get the number of elements in a list/array
-'''
+
 # String manipulation & Dictionary
-# Stand input
-'''print("******** STRING MANIPULATION ********")
+print("******** STRING MANIPULATION ********")
 WORD = word.upper()  # GO ALL CAPS
 print(word)
 print(WORD)
 print(word[0:5])  # Substring
 print("******** STRING MANIPULATION ********")
-'''
+
 wordFreq = {}
 for line in sys.stdin:  # Read line by line from std-in
     cleanLine = re.sub(r'[^\w\s]', '', line)  # Clean up the line

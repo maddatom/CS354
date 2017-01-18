@@ -21,4 +21,4 @@ for line in f:  # Read line by line from std-in
 f.close()  # Close the file
 # Print the stats to standard out
 for key, value in sorted(wordFreq.items(), key=lambda y:y[1], reverse=True):
-    print("%s %s" % (key, value))
+    print("%s %s" % (key, float(value)))

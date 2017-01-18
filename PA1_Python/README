@@ -1,0 +1,27 @@
+Name: Prince Kannah
+Class: CS 354 - Programming Languages
+Date: 1/19/16
+
+Overview:
+ wf.py is a word counting program. The script takes a text file and count the number of words (including digits).
+ The results are then printed to standard out.
+
+Included files:
+ The following files are included.
+ wf.py - the driver program
+ practice - directory containing sample/test files
+
+Building & Running:
+ All files and folders should be in the same directory.
+ To run the program simply issue the following:
+ 
+ python wf.py <file>
+
+Program Design:
+ wf.py is relatively. It takes the specified file and opens it.
+ While the file is open, it goes through it line by line. It cleans
+ up (remove punctuations) then splits it apart by space. Each word,
+ along with its count is then placed in the dictionary.
+
+Program Development & Testing:
+//TODO complete me
