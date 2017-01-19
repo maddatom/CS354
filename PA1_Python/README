@@ -1,27 +1,41 @@
-Name: Prince Kannah
+﻿Name: Prince Kannah
 Class: CS 354 - Programming Languages
 Date: 1/19/16
 
+
 Overview:
- wf.py is a word counting program. The script takes a text file and count the number of words (including digits).
- The results are then printed to standard out.
+wf.py is a word counting program. The script takes a text file and count the number of words (including digits). The results are then printed to standard out.
+
 
 Included files:
- The following files are included.
+The following files are included.
  wf.py - the driver program
  practice - directory containing sample/test files
+
 
 Building & Running:
  All files and folders should be in the same directory.
  To run the program simply issue the following:
- 
  python wf.py <file>
 
+
 Program Design:
- wf.py is relatively. It takes the specified file and opens it.
+wf.py is relatively simple. It takes the specified file and opens it.
  While the file is open, it goes through it line by line. It cleans
  up (remove punctuations) then splits it apart by space. Each word,
  along with its count is then placed in the dictionary.
 
+
 Program Development & Testing:
-//TODO complete me
+ Before I starting writing my word counting program I took
+ Python for a test drive and trying out the syntax. The sample
+ code I wrote can be found in practice/HelloWorld.py.
+
+
+ Python initially appears to have no real structure at least
+ when compared to a language like Java. Where Java is strict and rigid
+ Python takes the layback approach and doesn't seem overly concerned with  things being done a certain way. And this layback personality gives Python two great features: ease of learning and readability.
+
+
+ Python is easy to learn I think mostly because it looks like English.
+ Take opening a file: all one needs to do is use the keyword open(file,mode). No need to create a separate file object first then use a scanner. There is no hoops to jump through and it's straight forward. Certain keywords forgo their symbols in place of actual words (and, or, not). This makes teaching and learning Python for first time programmers easier. There is no ambiguity and the translation from English to code is simpler.

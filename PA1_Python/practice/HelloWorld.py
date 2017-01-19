@@ -13,6 +13,7 @@ print(len(sys.argv))  # Get the number of elements in a list/array
 
 # String manipulation & Dictionary
 print("******** STRING MANIPULATION ********")
+word = "Hello, world"
 WORD = word.upper()  # GO ALL CAPS
 print(word)
 print(WORD)
