@@ -1,17 +1,13 @@
-import java.util.*;
-
 /*
  * This class is a recursive-descent parser,
  * modeled after the programming language's grammar.
  * It constructs and has-a Scanner for the program
  * being parsed.
 */
-public class Parser 
-{
+public class Parser {
 
     private Scanner scanner;
 
-   
 
     /*
     * Creates a new scanner for the string to be parsed.
@@ -19,11 +15,11 @@ public class Parser
     * Throws SyntaxException if the scanner class throws one.
     * @param program
     */
-    public Node parse(String program) throws SyntaxException 
-    {
-		scanner=new Scanner(program);
-		scanner.next();
-		//return parseStmt();
+    public Node parse(String program) throws SyntaxException {
+        scanner = new Scanner(program);
+        scanner.next();
+        //return parseStmt();
+        return null;
     }
 
 }
