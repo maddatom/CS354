@@ -127,8 +127,8 @@ public class Scanner {
         return pos;
     }
 
-    // for unit testing
-    public static void main(String[] args) {
+    // uncomment for unit testing
+    /*public static void main(String[] args) {
         try {
             Scanner scanner = new Scanner(args[0]);
             while (scanner.next()) {
@@ -137,5 +137,5 @@ public class Scanner {
         } catch (SyntaxException e) {
             System.err.println(e);
         }
-    }
+    }*/
 }

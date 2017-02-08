@@ -5,24 +5,20 @@
 * All evaluations share the same environment,
 * so they can share variables.
 */
-public class Interpreter 
-{
+public class Interpreter {
 
-    public static void main(String[] args) 
-    {
-        Parser parser=new Parser();
-	Environment env=new Environment();
-	for (String stmt: args)
-	    try 
-            {
-		parser.parse(stmt).eval(env);
-		System.out.println(env.toString());
-		
-	    } catch (SyntaxException e) {
-		System.err.println(e);
-	    } catch (EvalException e) {
-		System.err.println(e);
-	    }
+    public static void main(String[] args) {
+        Parser parser = new Parser();
+        Environment env = new Environment();
+        for (String stmt : args)
+            try {
+                parser.parse(stmt).eval(env);
+                System.out.println(env.toString());
+
+            } catch (SyntaxException e) {
+                System.err.println(e);
+            } catch (EvalException e) {
+                System.err.println(e);
+            }
     }
-
 }
