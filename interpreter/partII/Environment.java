@@ -20,6 +20,10 @@ public class Environment {
     }
 
     public String toString() {
-        return environment.toString();
+        StringBuilder builder = new StringBuilder("");
+        for(String key: environment.keySet()){
+            builder.append(key + "="+ environment.get(key) + "\n");
+        }
+        return builder.toString();
     }
 }

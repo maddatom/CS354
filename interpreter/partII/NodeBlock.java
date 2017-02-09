@@ -17,14 +17,8 @@ public class NodeBlock extends Node {
 	public int eval(Environment e) throws EvalException {
 		int stmnt = statement.eval(e);
 		if (block == null) {
-			System.out.println("block IS null");
-			System.out.println("STATEMENT: " + statement);
 			return stmnt;
-//			return statement.eval(e);
 		}
-//		System.out.println("block is NOT null");
-//		System.out.println("STATEMENT: " + statement);
-//		statement.eval(e);
 		return block.eval(e);
 	}
 }

@@ -12,9 +12,7 @@ public class Interpreter {
         Environment env = new Environment();
         for (String stmt : args)
             try {
-            	System.out.println("STATMENT FROM INTER: " + stmt);
-            	System.out.println("STATMENT FROM INTER: " + env);
-                parser.parse(stmt).eval(env);
+            	parser.parse(stmt).eval(env);
                 System.out.println(env.toString());
 
             } catch (SyntaxException e) {
