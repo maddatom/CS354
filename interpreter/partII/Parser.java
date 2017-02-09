@@ -7,12 +7,12 @@
 public class Parser {
     private Scanner scanner;
 
-    /*
-    * Creates a new scanner for the string to be parsed.
-    * Returns the parsed statement
-    * Throws SyntaxException if the scanner class throws one.
-    * @param program
-    */
+    /**
+     * CONSTRUCTOR: create a Parser to parse the specified program
+     * @param program program to parse
+     * @return a node containing the parsed statement
+     * @throws SyntaxException
+     */
     public Node parse(String program) throws SyntaxException {
         scanner = new Scanner(program);
         scanner.next();
@@ -20,16 +20,13 @@ public class Parser {
     }
 
     private NodeBlock parseBlock() throws SyntaxException {
-        // return some kind of NodeBlock
-        Token token = scanner.curr();
-
         NodeStatement statement = parseStatement();
         if (scanner.curr().equals(new Token(";"))) {
             match(";");
             NodeBlock blk = parseBlock();
             return new NodeBlock(statement, blk);
         }
-        return new NodeBlock(statement, null);
+        return new NodeBlock(statement);
     }
 
     private NodeAssn parseAssn() throws SyntaxException {
@@ -46,7 +43,6 @@ public class Parser {
 
     /**
      * Parse a program's statement
-     *
      * @return the parsed statement
      * @throws SyntaxException if the Scanner gets an undefined token
      */

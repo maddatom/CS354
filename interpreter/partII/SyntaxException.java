@@ -16,5 +16,4 @@ public class SyntaxException extends Exception {
 	    +", expected="+expected
 	    +", found="+found;
     }
-
 }
