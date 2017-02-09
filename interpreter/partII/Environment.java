@@ -8,7 +8,8 @@ public class Environment {
     private HashMap<String, Integer> environment = new HashMap<>();
 
     public int put(String var, int val) {
-        return environment.put(var, val);
+    	environment.put(var, val);
+        return val;
     }
 
     public int get(int pos, String var) throws EvalException {

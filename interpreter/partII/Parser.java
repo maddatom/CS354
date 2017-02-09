@@ -29,7 +29,7 @@ public class Parser {
             NodeBlock blk = parseBlock();
             return new NodeBlock(statement, blk);
         }
-        return new NodeBlock(statement);
+        return new NodeBlock(statement, null);
     }
 
     private NodeAssn parseAssn() throws SyntaxException {
