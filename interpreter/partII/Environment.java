@@ -35,6 +35,6 @@ public class Environment {
         for(String key: environment.keySet()){
             builder.append(key + "="+ environment.get(key) + "\n");
         }
-        return builder.toString().substring(0, builder.length()-1);
+        return builder.toString().substring(0, builder.length()-1); // get rid of extra line
     }
 }

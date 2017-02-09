@@ -9,5 +9,4 @@ public abstract class Node {
     public int eval(Environment env) throws EvalException {
         throw new EvalException(pos, "cannot eval() node!");
     }
-
 }
