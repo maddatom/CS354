@@ -11,11 +11,11 @@ namespace CashRegister
     {
         public double getTotal()
         {
-            double total;
+            double total = 0;
             foreach (var item in this)
             {
                 Item t = item as Item;
-                total += t.getPrice();
+                total += (t.getPrice() * t.getQuantity());
             }
             return total;
         }

@@ -38,8 +38,9 @@
             </ListView.View>
         </ListView>
         <Button x:Name="RemoveAllButton" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="145,540,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveAllButtonClick"/>
-        <Rectangle x:Name="TotalRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="40" Margin="465,490,0,0" Stroke="Black" VerticalAlignment="Top" Width="175"/>
-        <Label x:Name="TotalLabel" Content="Total:" HorizontalAlignment="Left" Margin="465,460,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
+        <Label x:Name="TotalLabel" Content="Total:" HorizontalAlignment="Left" Margin="470,475,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
+        <TextBox x:Name="TotalTextBox" PreviewTextInput="QuantityTextBox_PreviewTextInput" HorizontalAlignment="Left" Height="25" Margin="470,505,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="80" AcceptsReturn="False" AcceptsTab="False" IsEnabled="False"/>
 
     </Grid>
 </Window>

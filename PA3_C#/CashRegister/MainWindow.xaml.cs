@@ -34,6 +34,8 @@ namespace CashRegister
         {
             string name = NameTextBox.Text;
             int quantity;
+
+
             double price;
 
             // try to parse the quantity entered by the user, stored that # to quantity
@@ -42,6 +44,7 @@ namespace CashRegister
             bool parsePriceResult = double.TryParse(PriceTextBox.Text, out price);
             
             cart.Add(new Item(name, quantity, price));
+            TotalTextBox.Text = cart.getTotal().ToString();
             CartListView.Items.Refresh();
         }
 
