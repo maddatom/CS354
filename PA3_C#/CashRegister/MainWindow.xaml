@@ -1,0 +1,45 @@
+﻿<Window x:Class="CashRegister.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CashRegister"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="627" Width="854">
+    <Grid>
+        <Rectangle x:Name="ProductInfoRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="190" Margin="480,35,0,0" Stroke="Black" VerticalAlignment="Top" Width="345"/>
+        <Button x:Name="RemoveButton" Content="REMOVE" HorizontalAlignment="Left" Margin="25,540,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveButtonClick"/>
+        <Button x:Name="AddButton" Content="ADD" HorizontalAlignment="Left" Margin="710,190,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="AddButtonClick"/>
+        <Label x:Name="NameLabel" Content="NAME:" HorizontalAlignment="Left" Margin="505,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
+        <Label x:Name="PriceLabel" Content="PRICE:" HorizontalAlignment="Left" Margin="500,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
+        <Label x:Name="QuantityLabel" Content="QUANTITY:" HorizontalAlignment="Left" Margin="507,150,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
+        <TextBox x:Name="NameTextBox" PreviewTextInput="NameTextBox_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="670,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" AcceptsReturn="False" AcceptsTab="True"/>
+        <TextBox x:Name="PriceTextBox" PreviewTextInput="PriceTextBox_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="675,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" AcceptsReturn="False" AcceptsTab="True"/>
+        <TextBox x:Name="QuantityTextBox" PreviewTextInput="QuantityTextBox_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="675,147,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" AcceptsReturn="False" AcceptsTab="True"/>
+        <Label x:Name="ProductInfoLabel" Content="Product information:" HorizontalAlignment="Left" Margin="555,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="148"/>
+        <Label x:Name="ShoppingCartLabel" Content="Shopping cart:" HorizontalAlignment="Left" Margin="35,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="148"/>
+        <Rectangle x:Name="CartRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="505" Margin="10,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="440"/>
+        <ListView x:Name="CartListView" HorizontalAlignment="Left" Height="470" Margin="20,40,0,0" VerticalAlignment="Top" Width="410">
+            <!--
+            <ListViewItem Content="Coffe"></ListViewItem>
+            <ListViewItem Content="Coffe"></ListViewItem>
+            <ListViewItem Content="Coffe"></ListViewItem>
+            <ListViewItem Content="Cake"></ListViewItem>
+            <ListViewItem Content="Zebra"></ListViewItem>
+            <ListViewItem Content="Apple"></ListViewItem>
+            <ListViewItem Content="Coffe"></ListViewItem> -->
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Name" Width="60">
+                    </GridViewColumn>
+                    <GridViewColumn Header="Price" Width="60"></GridViewColumn>
+                    <GridViewColumn Header="Quantity" Width="60"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="RemoveAllButton" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="145,540,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveAllButtonClick"/>
+        <Rectangle x:Name="TotalRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="40" Margin="465,490,0,0" Stroke="Black" VerticalAlignment="Top" Width="175"/>
+        <Label x:Name="TotalLabel" Content="Total:" HorizontalAlignment="Left" Margin="465,460,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
+
+    </Grid>
+</Window>
