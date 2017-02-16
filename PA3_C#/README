@@ -1,0 +1,39 @@
+Name: Prince Kannah
+Class: CS 354 - Programming Languages
+Date: 1/16/16
+
+
+Overview:
+ Cash Register is a Windows application that simiulates a cash register. Customers input product information
+ and add that product to a shopping cart.
+
+
+Program Design:
+I try to employ the MVC design patter. The base object class is Item.cs. Each Item
+has a name, price and quantity. I then created GroceryCart.cs to easily manage a collection of 
+items. This collection is use to drive the ListView GUI object.
+
+
+Program Development & Testing:
+ GUI development with C# (using Visual Studio) is easier compared to Java.
+ The easy drag and drop setup gives you immediate feedback how elements will look
+ in your program.
+
+ Getting the hang of Visual Studio was a bit tough at first. I spend quite a bit of time
+ exploring and find my way around the enviroment. Keyboard shortcuts (call chord) is usually 
+ done through a two key process. For example to autoformat your code you'll need to issue the
+ keyboard command Crtl + K, Crtl + D or Crtl + R, Crtl + R to refactor. It took me a long
+ time to find the GUI elements toolbox as it was hidden even when viewing the drap and drop
+ design studio.
+
+ C# is a language is pretty interesting. It's similar to Java in a lot of ways
+ but also has some cool features and tricks. By far the most useful ones are TryParse().
+ TryParse() takes a string to parse and goes through the process of parsing. It simply returns
+ false if the parse was unsuccessful. The other one is that it seems like you can call ToString()
+ whereever you like. I was able to do ToString() on an in-line calculation and no errors were thrown.
+
+ The XAML syntax is the same as HTML so it wasn't too hard to understand. However, all the properties
+ for the various GUI elements were confusing at times and the official documentation were not as helpful
+ as I would have hoped. One part that I spend a lot of time on was getting my custom object (Item)
+ to display correctly in the list. I finally came across an example that was key to getting me
+ pass that particular issue.
