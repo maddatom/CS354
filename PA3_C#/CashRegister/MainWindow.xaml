@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CashRegister"
         mc:Ignorable="d"
-        Title="Cash Register" Height="672" Width="895" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FF3F6381">
+        Title="Cash Register" Height="633" Width="895" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="WindowGrid" Background="#FF3F6381">
         <Rectangle x:Name="ProductInfoRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="190" Margin="529,40,0,0" Stroke="Black" VerticalAlignment="Top" Width="325"/>
-        <Button x:Name="RemoveButton" Content="REMOVE" HorizontalAlignment="Left" Margin="10,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveButtonClick" BorderBrush="#FFF0F92A"/>
-        <Button x:Name="AddButton" Content="ADD" HorizontalAlignment="Left" Margin="753.334,197.666,0,0" VerticalAlignment="Top" Width="65.333" Height="25" Click="AddButtonClick" BorderBrush="#FFFF9900"/>
+        <Button x:Name="RemoveButton" Content="REMOVE" HorizontalAlignment="Left" Margin="10,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveButtonClick" BorderBrush="#FFF0F92A" ToolTip="Remove the selected item(s) from the cart" FontFamily="Global User Interface"/>
+        <Button x:Name="AddButton" Content="ADD" HorizontalAlignment="Left" Margin="753.334,197.666,0,0" VerticalAlignment="Top" Width="65.333" Height="25" Click="AddButtonClick" BorderBrush="#FFFF9900" FontFamily="Global User Interface" ToolTip="Add the item to the cart"/>
         <Label x:Name="NameLabel" Content="NAME:" HorizontalAlignment="Left" Margin="551.667,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="23" Width="83"/>
         <Label x:Name="PriceLabel" Content="PRICE:" HorizontalAlignment="Left" Margin="551.667,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
         <Label x:Name="QuantityLabel" Content="QUANTITY:" HorizontalAlignment="Left" Margin="551.667,138,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="32" Width="83"/>
@@ -18,7 +18,7 @@
         <TextBox x:Name="QuantityTextBox" PreviewTextInput="QuantityTextBoxValidation" HorizontalAlignment="Left" Height="23" Margin="670,147,0,0" VerticalAlignment="Top" Width="148.667" AcceptsReturn="False" SpellCheck.IsEnabled="True" AllowDrop="False" VerticalScrollBarVisibility="Disabled" FontFamily="Global User Interface" MaxLines="1" />
         <Label x:Name="ProductInfoLabel" Content="Product information:" Margin="530,10,0,0" RenderTransformOrigin="1.316,0.577" Height="30" IsEnabled="False" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Global User Interface" FontSize="18" Foreground="#FF11110B" ToolTip="Enter the product information below"/>
         <Label x:Name="ShoppingCartLabel" Content="Shopping cart:" HorizontalAlignment="Left" Margin="10,8.4,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" FontSize="18" FontFamily="Global User Interface" IsEnabled="False" ToolTip="Your shopping cart...so far" Foreground="#FF11110B"/>
-        <ListView x:Name="CartListView" Height="501.4" Margin="10,40,378,0" VerticalAlignment="Top" BorderBrush="#FF080808">
+        <ListView x:Name="CartListView" Height="501.4" Margin="10,40,378,0" VerticalAlignment="Top" BorderBrush="#FF080808" FontFamily="Global User Interface" FontSize="14">
             <ListView.View>
                 <GridView AllowsColumnReorder="False" ColumnHeaderToolTip="Product information">
                     <!-- This part was tricky to get. The object being display had to have spererate getter/setters to be able to use this -->
@@ -28,7 +28,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="RemoveAllButton" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="138,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveAllButtonClick" BorderBrush="#FFEA4507"/>
+        <Button x:Name="RemoveAllButton" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="138,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveAllButtonClick" BorderBrush="#FFEA4507" FontFamily="Global User Interface" ToolTip="Remove all items from the cart"/>
         <Rectangle x:Name="TotalRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="130" Margin="514,411.4,0,0" Stroke="Black" VerticalAlignment="Top" Width="207"/>
         <Label x:Name="SubtotalLabel" Content="Subtotal:" HorizontalAlignment="Left" Margin="514,421.4,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="23" Width="65" IsEnabled="False"/>
         <Label x:Name="TaxLabel" Content="Tax:" HorizontalAlignment="Left" Margin="514,464.05,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="25" Width="65" IsEnabled="False"/>
