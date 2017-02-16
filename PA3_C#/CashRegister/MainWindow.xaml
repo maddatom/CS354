@@ -8,7 +8,7 @@
         Title="Cash Register" Height="672" Width="895" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF3F6381">
         <Rectangle x:Name="ProductInfoRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="190" Margin="529,40,0,0" Stroke="Black" VerticalAlignment="Top" Width="325"/>
-        <Button x:Name="RemoveButton" Content="REMOVE" HorizontalAlignment="Left" Margin="10,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveButtonClick"/>
+        <Button x:Name="RemoveButton" Content="REMOVE" HorizontalAlignment="Left" Margin="10,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveButtonClick" BorderBrush="#FFF0F92A"/>
         <Button x:Name="AddButton" Content="ADD" HorizontalAlignment="Left" Margin="753.334,197.666,0,0" VerticalAlignment="Top" Width="65.333" Height="25" Click="AddButtonClick" BorderBrush="#FFFF9900"/>
         <Label x:Name="NameLabel" Content="NAME:" HorizontalAlignment="Left" Margin="551.667,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="23" Width="83"/>
         <Label x:Name="PriceLabel" Content="PRICE:" HorizontalAlignment="Left" Margin="551.667,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.316,0.577" Height="25" Width="83"/>
@@ -28,7 +28,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="RemoveAllButton" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="138,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveAllButtonClick"/>
+        <Button x:Name="RemoveAllButton" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="138,555.4,0,0" VerticalAlignment="Top" Width="90" Height="25" Click="RemoveAllButtonClick" BorderBrush="#FFEA4507"/>
         <Rectangle x:Name="TotalRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="130" Margin="514,411.4,0,0" Stroke="Black" VerticalAlignment="Top" Width="207"/>
         <Label x:Name="SubtotalLabel" Content="Subtotal:" HorizontalAlignment="Left" Margin="514,421.4,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="23" Width="65" IsEnabled="False"/>
         <Label x:Name="TaxLabel" Content="Tax:" HorizontalAlignment="Left" Margin="514,464.05,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0" Height="25" Width="65" IsEnabled="False"/>
