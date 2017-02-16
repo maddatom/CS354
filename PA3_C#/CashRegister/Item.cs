@@ -9,10 +9,15 @@ namespace CashRegister
     class Item
     {
         private int quantity;
-        private double price;
-        string name;
+        private decimal price;
+        private string name;
+        
+        // Need for Path binding in MainWindow.xaml
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
 
-        public Item(string name, int quantity, double price)
+        public Item(string name, int quantity, decimal price)
         {
             this.name = name;
             this.price = price;
@@ -28,7 +33,8 @@ namespace CashRegister
         {
             this.name = name;
         }
-        public void setPrice(double price)
+
+        public void setPrice(decimal price)
         {
             this.price = price;
         }
@@ -43,7 +49,7 @@ namespace CashRegister
             return name;
         }
 
-        public double getPrice()
+        public decimal getPrice()
         {
             return price;
         }
@@ -52,16 +58,11 @@ namespace CashRegister
         {
             return quantity;
         }
-
-        public string guiString()
-        {
-            return getName() + ":\n\t" + getPrice().ToString() +"\t" + getQuantity().ToString();
-        }
-
+        
         override
         public string ToString()
         {
-            return getName() + "\t" + getPrice().ToString() + "\t" + getQuantity().ToString();
+            return getName() + ", Price:" + getPrice().ToString() + ", In-stock:" + getQuantity().ToString();
         }
     }
 }

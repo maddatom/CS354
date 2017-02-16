@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CashRegister
 {
-    class GroceryCart:ArrayList
+    class GroceryCart : ArrayList
     {
-        public double getTotal()
+        public decimal getSubTotal()
         {
-            double total = 0;
+            decimal total = 0m;
             foreach (var item in this)
             {
                 Item t = item as Item;
