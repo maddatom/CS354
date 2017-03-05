@@ -1,22 +1,25 @@
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Created by kanna on 2/8/2017.
  */
-public class NodeBlock extends NodeStatement{
-	private List<NodeStatement> statements = new LinkedList<>();
+public class NodeBlock extends Node{
+	private NodeStatement statement;
+	private NodeBlock block;
 
-	public NodeBlock(List<NodeStatement> statements){
-		this.statements = statements;
+	public NodeBlock(NodeStatement stmnt, NodeBlock block){
+		this.statement = stmnt;
+		this.block = block;
+	}
+
+	public NodeBlock(NodeStatement stmnt){
+		statement = stmnt;
 	}
 
 	public int eval(Environment e) throws EvalException{
-		for(NodeStatement s :statements)
+		int stmnt = statement.eval(e);
+		if(block == null)
 		{
-			return s.eval(e);
+			return stmnt;
 		}
-		//TODO: might lead to problems
-		return 0;
+		return block.eval(e);
 	}
 }

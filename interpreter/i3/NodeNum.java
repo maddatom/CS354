@@ -1,7 +1,14 @@
 /**
- * Created by kanna on 2/23/2017.
+ * Created by kanna on 3/5/2017.
  */
 public class NodeNum extends Node{
-	private String num;
+	private String digit;
 
+	public NodeNum(String digit){
+		this.digit = digit;
+	}
+
+	public int eval(Environment env) throws EvalException{
+		return Integer.parseInt(digit);
+	}
 }

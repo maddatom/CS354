@@ -21,6 +21,9 @@ public class NodeExpr extends Node{
 	}
 
 	public int eval(Environment env) throws EvalException{
-		return expr == null ? term.eval(env) : addop.op(expr.eval(env), term.eval(env));
+		return expr == null
+		       ? term.eval(env)
+		       : addop.op(expr.eval(env), term.eval(env));
 	}
+
 }

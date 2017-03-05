@@ -1,4 +1,5 @@
 public class NodeTerm extends Node{
+
 	private NodeFact fact;
 	private NodeMulop mulop;
 	private NodeTerm term;
@@ -19,13 +20,9 @@ public class NodeTerm extends Node{
 			this.term.append(term);
 	}
 
-	@Override
-	public String toString(){
-		return "FACT: " + fact + " MULOP: " + mulop + " TERM: " + term;
-	}
-
 	public int eval(Environment env) throws EvalException{
-		return term == null ? fact.eval(env) : (int)mulop.op(term.eval(env), fact.eval(env));
+		return term == null
+		       ? fact.eval(env)
+		       : mulop.op(term.eval(env), fact.eval(env));
 	}
-
 }

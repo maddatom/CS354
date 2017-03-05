@@ -2,11 +2,11 @@
 // collectively model parse-tree nodes.
 // Each kind of node can be eval()-uated.
 
-public abstract class Node{
+public abstract class Node {
 
-	protected int pos = 0;
+    protected int pos = 0;
 
-	public int eval(Environment env) throws EvalException{
-		throw new EvalException(pos, "cannot eval() node!");
-	}
+    public int eval(Environment env) throws EvalException {
+        throw new EvalException(pos, "cannot eval() node!");
+    }
 }

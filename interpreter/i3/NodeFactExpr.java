@@ -1,20 +1,14 @@
 /**
- * Created by kanna on 2/23/2017.
+ * Created by kanna on 3/5/2017.
  */
 public class NodeFactExpr extends NodeFact{
-	private NodeExpr expr;
-	private NodeFactUnary unary;
+	private NodeExpr xpression;
 
-	public NodeFactExpr(NodeExpr expression){
-		expr = expression;
+	public NodeFactExpr(NodeExpr xp){
+		xpression = xp;
 	}
 
-	public NodeFactExpr(NodeExpr e, NodeFactUnary u){
-		expr = e;
-		unary = u;
-	}
-
-	public int eval(Environment e) throws EvalException{
-		return unary == null ? expr.eval(e) : - 1 * expr.eval(e);
+	public int eval(Environment env) throws EvalException{
+		return xpression.eval(env);
 	}
 }

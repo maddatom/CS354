@@ -7,26 +7,6 @@
 public class Parser{
 	private Scanner scanner;
 
-	public static void main(String[] args){
-		try
-		{
-			//			Scanner scanner = new Scanner(args[0]);
-			Parser p = new Parser();
-			System.out.println(args[0]);
-			for(String s :
-					args)
-			{
-
-				System.out.println(p.parse(s));
-			}
-			//			while(scanner.next())
-
-		} catch(SyntaxException e)
-		{
-			System.err.println(e);
-		}
-	}
-
 	/**
 	 * CONSTRUCTOR: create a Parser to parse the specified program
 	 * @param program program to parse
@@ -36,12 +16,23 @@ public class Parser{
 	public Node parse(String program) throws SyntaxException{
 		scanner = new Scanner(program);
 		scanner.next();
-		return parseStatement();
-		//		return parseBlock();
+		return parseBlock();
 	}
 
 	private NodeBlock parseBlock() throws SyntaxException{
 		NodeStatement statement = parseStatement();
+		//		List<NodeStatement> statementList = new LinkedList<>();
+		//		while(true){
+		//			statement = parseStatement();
+		//			statementList.add(statement);
+		//
+		//			if(scanner.curr().equals(new Token(";"))){
+		//				match(";");
+		//			}
+		//			else
+		//				break;
+		//		}
+		//		return new NodeBlock(statementList);
 		if(scanner.curr().equals(new Token(";")))
 		{
 			match(";");
@@ -51,23 +42,70 @@ public class Parser{
 		return new NodeBlock(statement);
 	}
 
-	private NodeStatementWr parseWr() throws SyntaxException{
-		match("wr");
-		NodeExpr expr = parseExpression();
-		return new NodeStatementWr(expr);
-	}
-
 	private NodeAssn parseAssn() throws SyntaxException{
 		Token id = scanner.curr();
 		match("id");
 		match("=");
-
-		NodeExpr e = parseExpression();
-		NodeAssn ass = new NodeAssn(id.lex(), e);
-		return new NodeAssn(id.lex(), e);
+		NodeExpr express = parseExpression();
+		NodeAssn ass = new NodeAssn(id.lex(), express);
+		return ass;
 	}
 
-	private NodeMulop parseMultiplication() throws SyntaxException{
+	private NodeExpr parseExpression() throws SyntaxException{
+		NodeTerm t = parseTerm();
+		NodeAddop add = parseAdditionSubtraction();
+		if(add == null)
+		{
+			return new NodeExpr(t, null, null);
+		}
+		NodeExpr express = parseExpression();
+		express.append(new NodeExpr(t, add, null));
+		return express;
+	}
+
+	private NodeTerm parseTerm() throws SyntaxException{
+		NodeFact f = parseFact();
+		NodeMulop mulop = parseMultiplicationDivision();
+		if(mulop == null)
+		{
+			return new NodeTerm(f, null, null);
+		}
+		NodeTerm t = parseTerm();
+		t.append(new NodeTerm(f, mulop, null));
+		return t;
+	}
+
+	private NodeFact parseFact() throws SyntaxException{
+		if(scanner.curr().equals(new Token("(")))
+		{
+			match("(");
+			NodeExpr xp = parseExpression();
+			match(")");
+			return new NodeFactExpr(xp);
+		}
+		if(scanner.curr().equals(new Token("id")))
+		{
+			Token id = scanner.curr();
+			match("id");
+			return new NodeFactId(scanner.pos(), id.lex());
+		}
+		NodeNum n = parseDigits();
+		match("num");
+		return new NodeFactNum(n);
+	}
+
+	private NodeStatementWr NodeStatementWr() throws SyntaxException{
+		match("wr");
+		NodeExpr xp = parseExpression();
+		return new NodeStatementWr(xp);
+	}
+
+	private NodeNum parseDigits() throws SyntaxException{
+		String lex = scanner.curr().lex();
+		return new NodeNum(lex);
+	}
+
+	private NodeMulop parseMultiplicationDivision() throws SyntaxException{
 		if(scanner.curr().equals(new Token("*")))
 		{
 			match("*");
@@ -81,7 +119,7 @@ public class Parser{
 		return null;
 	}
 
-	private NodeAddop parseAddition() throws SyntaxException{
+	private NodeAddop parseAdditionSubtraction() throws SyntaxException{
 		if(scanner.curr().equals(new Token("+")))
 		{
 			match("+");
@@ -95,69 +133,19 @@ public class Parser{
 		return null;
 	}
 
-	private NodeExpr parseExpression() throws SyntaxException{
-		NodeTerm term = parseTerm();
-		NodeAddop addOP = parseAddition();
-		if(addOP == null)
-		{
-			return new NodeExpr(term, null, null);
-		}
-		NodeExpr expression = parseExpression();
-		expression.append(new NodeExpr(term, addOP, null));
-		return expression;
-	}
-
-	private NodeTerm parseTerm() throws SyntaxException{
-		NodeFact nodeFact = parseFact();
-		NodeMulop mulOP = parseMultiplication();
-		if(mulOP == null)
-		{
-			return new NodeTerm(nodeFact, null, null);
-		}
-		NodeTerm nodeTerm = parseTerm();
-		nodeTerm.append(new NodeTerm(nodeFact, mulOP, null));
-		return nodeTerm;
-	}
-
-	private NodeFact parseFact() throws SyntaxException{
-		if(scanner.curr().equals(new Token("(")))
-		{
-			match("(");
-			NodeExpr expression = parseExpression();
-			match(")");
-			return new NodeFactExpr(expression);
-		}
-		if(scanner.curr().equals(new Token("id")))
-		{
-			Token id = scanner.curr();
-			match("id");
-			return new NodeFactId(scanner.pos(), id.lex());
-		}
-		if(scanner.curr().equals(new Token("-")))
-		{
-			match("-");
-			NodeFact f = parseFact();
-			return new NodeFactUnary(f);
-		}
-		Token num = scanner.curr();
-		match("num");
-		return new NodeFactNum(num.lex());
-	}
-
 	/**
 	 * Parse a program's statement
 	 * @return the parsed statement
 	 * @throws SyntaxException if the Scanner gets an undefined token
 	 */
 	private NodeStatement parseStatement() throws SyntaxException{
-		if(scanner.curr().equals(new Token("wr")))
+		if(scanner.curr().lex().equals("wr"))
 		{
-			return parseWr();
-		} else
-		{
-			return parseAssn();
+			match("wr");
+			NodeExpr xp = parseExpression();
+			return new NodeStatementWr(xp);
 		}
-		//		return new NodeStatement(parseAssn());
+		return new NodeStatement(parseAssn());
 	}
 
 	private void match(String s) throws SyntaxException{

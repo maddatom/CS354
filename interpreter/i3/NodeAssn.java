@@ -2,11 +2,11 @@ public class NodeAssn extends Node{
 	private String id;
 	private NodeExpr expression;
 
-	public NodeAssn(String id, NodeExpr e){
+	public NodeAssn(String id, NodeExpr exp){
 		this.id = id;
-		expression = e;
+		expression = exp;
 	}
-	public String getId(){return id;}
+
 	public int eval(Environment env) throws EvalException{
 		return env.put(id, expression.eval(env));
 	}

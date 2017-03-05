@@ -7,16 +7,14 @@ import java.util.Set;
 public class Scanner{
 	private String program; // source program being interpreted
 	private int pos; // index of next char in program
-	private Token token; // current scanned token
+	private Token token; // last/current scanned token
 
 	private Set<String> whitespace = new HashSet<>();
-	private Set<String> digits = new HashSet<>();
 	private Set<String> letters = new HashSet<>();
 	private Set<String> keywords = new HashSet<>();
-	//this also doubles as my symbols table
-	private Set<String> operators = new HashSet<>();
-	private Set<String> letterDigits = new HashSet<>();
-	/*private Set<String> comments = new HashSet<>();*/
+	private Set<String> symbols = new HashSet<>();
+	private Set<String> digits = new HashSet<>();
+	private Set<String> lettersDigits = new HashSet<>();
 
 	// constructor:
 	// - squirrel-away source program
@@ -26,36 +24,51 @@ public class Scanner{
 		pos = 0;
 		token = null;
 		initWhitespace(whitespace);
-		initDigits(digits);
 		initLetters(letters);
-		initLetterDigits(letterDigits);
+		initDigits(digits);
+		initSymbols(symbols);
 		initKeywords(keywords);
-		initOperators(operators);
+		initLettersAndDigits(lettersDigits);
 	}
 
-	private void initLetterDigits(Set<String> letterDigits){
-		letterDigits.addAll(letters);
-		letterDigits.addAll(digits);
+	// uncomment for unit testing
+	public static void main(String[] args){
+		try
+		{
+			Scanner scanner = new Scanner(args[0]);
+			while(scanner.next())
+			{
+				System.out.println(scanner.curr());
+			}
+		} catch(SyntaxException e)
+		{
+			System.err.println(e);
+		}
 	}
 
-	private void initDigits(Set<String> set){
-		set.add(".");
-		fill(set, '0', '9');
+	private void initLettersAndDigits(Set<String> s){
+		s.addAll(letters);
+		s.addAll(digits);
 	}
 
-	private void initOperators(Set<String> operators){
-		operators.add("+");
-		operators.add("/");
-		operators.add("*");
-		operators.add("-");
-		operators.add("=");
-		operators.add(";");
-		operators.add("(");
-		operators.add(")");
+	private void initDigits(Set<String> digits){
+		fill(digits, '0', '9');
+		digits.add(".");
 	}
 
-	private void initKeywords(Set<String> keywords){
-		keywords.add("wr");
+	private void initKeywords(Set<String> set){
+		set.add("wr");
+	}
+
+	private void initSymbols(Set<String> set){
+		set.add(";");
+		set.add("=");
+		set.add("+");
+		set.add("-");
+		set.add("/");
+		set.add("*");
+		set.add("(");
+		set.add(")");
 	}
 
 	private void initLetters(Set<String> s){
@@ -100,15 +113,14 @@ public class Scanner{
 		many(whitespace);
 		String c = program.charAt(pos) + "";
 		if(letters.contains(c))
-		{ // letters and keywords
+		{ // keywords & ID
 			nextKwID();
+		} else if(symbols.contains(c))
+		{ // symbols
+			nextOperator();
 		} else if(digits.contains(c))
 		{ // digits
 			nextNum();
-		} else if(operators.contains(c))
-		{
-			// operators
-			nextOperator();
 		} else
 		{
 			System.err.println("illegal character at position " + pos);
@@ -118,47 +130,33 @@ public class Scanner{
 		return true;
 	}
 
-	private void nextNum(){
-		String lexeme = "";
-		try
-		{
-			while(Character.isDigit(program.charAt(pos)))
-			{
-				lexeme += program.charAt(pos);
-				pos++;
-			}
-		} catch(Exception e)
-		{
-		}
-		token = new Token("num", lexeme);
-		//		int old = pos;
-		//		many(digits);
-		//		token = new Token("num", program.substring(old, pos));
-	}
-
 	private void nextOperator(){
 		int old = pos;
-		pos = old + 2;
-		// double char operator
-		if(! done())
+		pos += (old + 2);
+		if(! (done()))
 		{
-			String lex = program.substring(old, pos);
-			if(operators.contains(lex))
+			String lexeme = program.substring(old, pos);
+			if(symbols.contains(lexeme))
 			{
-				token = new Token(lex);
+				token = new Token(lexeme);
 				return;
 			}
 		}
-		// single char operator
-		pos = old + 1;
-		String lex = program.substring(old, pos);
-		token = new Token(lex);
+		pos = (old + 1);
+		String lexeme = program.substring(old, pos);
+		token = new Token(lexeme);
+	}
+
+	private void nextNum(){
+		int old = pos;
+		many(digits);
+		token = new Token("num", program.substring(old, pos));
 	}
 
 	private void nextKwID(){
 		int old = pos;
 		many(letters);
-		many(letterDigits);
+		many(lettersDigits);
 		String lexeme = program.substring(old, pos);
 		token = new Token((keywords.contains(lexeme) ? lexeme : "id"), lexeme);
 	}
@@ -179,14 +177,5 @@ public class Scanner{
 
 	public int pos(){
 		return pos;
-	}
-	public static void main(String[] args) {
-		try {
-			Scanner scanner=new Scanner(args[0]);
-			while (scanner.next())
-				System.out.println(scanner.curr());
-		} catch (SyntaxException e) {
-			System.err.println(e);
-		}
 	}
 }

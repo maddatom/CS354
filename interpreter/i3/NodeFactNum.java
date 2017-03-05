@@ -1,14 +1,14 @@
 /**
- * Created by kanna on 2/23/2017.
+ * Created by kanna on 3/5/2017.
  */
 public class NodeFactNum extends NodeFact{
-	private NodeNum n;
+	private NodeNum num;
 
 	public NodeFactNum(NodeNum num){
-		n = num;
+		this.num = num;
 	}
 
-	public int eval(Environment e) throws EvalException{
-		return Integer.parseInt(num);
+	public int eval(Environment env) throws EvalException{
+		return num.eval(env);
 	}
 }
