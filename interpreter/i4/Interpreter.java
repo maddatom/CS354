@@ -10,19 +10,6 @@ public class Interpreter{
 	public static void main(String[] args) throws SyntaxException, EvalException{
 		Parser parser = new Parser();
 		Environment env = new Environment();
-		/*for(String prog : args)
-		{
-//			try
-//			{
-				Node node = parser.parse(prog);
-				Double evaluation;
-				System.out.print(node == null ? "" : (evaluation = node.eval(env)) == null ? "" : evaluation + "\n");
-//			} catch(EvalException | SyntaxException e)
-			//			{
-			//				System.err.println(e);
-			//			}
-		}*/
-
 		for(String stmt : args)
 		{
 			Node n = parser.parse(stmt);

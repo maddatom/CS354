@@ -7,7 +7,6 @@ public class NodeAssn extends Node{
 		expression = exp;
 	}
 
-	public String getId(){return id;}
 	public Double eval(Environment env) throws EvalException{
 		env.put(id, expression.eval(env));
 		return null;
