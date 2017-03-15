@@ -21,18 +21,6 @@ public class Parser{
 
 	private NodeBlock parseBlock() throws SyntaxException{
 		NodeStatement statement = parseStatement();
-		//		List<NodeStatement> statementList = new LinkedList<>();
-		//		while(true){
-		//			statement = parseStatement();
-		//			statementList.add(statement);
-		//
-		//			if(scanner.curr().equals(new Token(";"))){
-		//				match(";");
-		//			}
-		//			else
-		//				break;
-		//		}
-		//		return new NodeBlock(statementList);
 		if(scanner.curr().equals(new Token(";")))
 		{
 			match(";");

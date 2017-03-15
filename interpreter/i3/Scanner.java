@@ -32,7 +32,7 @@ public class Scanner{
 	}
 
 	// uncomment for unit testing
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		try
 		{
 			Scanner scanner = new Scanner(args[0]);
@@ -44,7 +44,7 @@ public class Scanner{
 		{
 			System.err.println(e);
 		}
-	}
+	}*/
 
 	private void initLettersAndDigits(Set<String> s){
 		s.addAll(letters);
